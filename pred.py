@@ -21,9 +21,7 @@ def create_RNN(input_shape):
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
  
-# demo_model = create_RNN(2, 1, (3,1), activation=['linear', 'linear'])
 df = read_csv('amoni_pred_base.csv', parse_dates=True, index_col='row_date')
-# SPLIT_ON = 176400
 SPLIT_ON = 18260
 # TIME_STEPS = 32000
 # STEPS = 800
@@ -89,7 +87,6 @@ def plot_result(trainY, testY, train_predict, test_predict):
     plt.axvline(x=len(trainY), color='r')
     plt.legend(['Actual', 'Predictions', 'Binary Predictions'])
     plt.xlabel('Observation number after given time steps')
-    plt.ylabel('Sunspots scaled')
     plt.title('Actual and Predicted Values. The Red Line Separates The Training And Test Examples')
     from sklearn.metrics import accuracy_score
     train_acc = accuracy_score(trainY, apply(train_predict))

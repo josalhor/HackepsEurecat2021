@@ -6,7 +6,7 @@ from matplotlib import pyplot
 import tensorflow as tf
 from tensorflow import keras
 
-df = read_csv('amoni_pred_base.csv', parse_dates=True, index_col='row_date')
+df = read_csv('amoni_pred_base_split.csv', parse_dates=True, index_col='row_date')
 # SPLIT_ON = 176400
 SPLIT_ON = 18260
 TIME_STEPS = 800
@@ -52,7 +52,6 @@ def plot_result(trainY, testY, train_predict, test_predict):
         'Binary Predictions'
     ])
     plt.xlabel('Observation number after given time steps')
-    plt.ylabel('Sunspots scaled')
     plt.title('Actual and Predicted Values. The Red Line Separates The Training And Test Examples')
     from sklearn.metrics import accuracy_score
     train_acc = accuracy_score(trainY, apply(train_predict))
