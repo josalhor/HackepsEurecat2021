@@ -9,7 +9,7 @@ from tensorflow import keras
 df = read_csv('amoni_pred_base.csv', parse_dates=True, index_col='row_date')
 # SPLIT_ON = 176400
 SPLIT_ON = 18260
-TIME_STEPS = 1200
+TIME_STEPS = 800
 STEPS = 1 # or 50¿ 
 
 values_t = df.iloc[:SPLIT_ON, 0].values
@@ -83,7 +83,7 @@ for ON in ['dangerous_drift', 'drift']:
 
 
     binary_pred = plot_result(trainY, testY, train_predict, test_predict)
-    padded_pred = np.append(np.zeros((TIME_STEPS,)), binary_pred)
+    padded_pred = np.append(np.empty((TIME_STEPS,)), binary_pred)
     df[f'pred_{ON}'] = padded_pred
 
 df.to_csv('output.csv')

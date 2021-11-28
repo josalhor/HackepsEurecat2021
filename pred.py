@@ -27,7 +27,7 @@ df = read_csv('amoni_pred_base.csv', parse_dates=True, index_col='row_date')
 SPLIT_ON = 18260
 # TIME_STEPS = 32000
 # STEPS = 800
-TIME_STEPS = 1200
+TIME_STEPS = 800
 STEPS = 10 # or 50¿ 
 values_t = df.iloc[:SPLIT_ON, 0].values
 drift_t = df.iloc[:SPLIT_ON, 1].values
@@ -67,7 +67,7 @@ model = create_RNN(input_shape=(TIME_STEPS,1))
 filepath="checkpoint-{epoch:02d}-{val_accuracy:.4f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=False, mode='max')
 callbacks_list = [checkpoint]
-history = model.fit(trainX, trainY, validation_data=(testX, testY), epochs=80, batch_size=64, verbose=2, callbacks=callbacks_list)
+history = model.fit(trainX, trainY, validation_data=(testX, testY), epochs=140, batch_size=64, verbose=2, callbacks=callbacks_list)
 
 # make predictions
 train_predict = model.predict(trainX)

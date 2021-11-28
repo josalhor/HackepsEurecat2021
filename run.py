@@ -25,7 +25,8 @@ if __name__ == '__main__':
     # df['origvalue'] = df['value'].rolling(window=90).min().shift(1).fillna(df['value'].mean())
     # df['value'] = df['value'].rolling(window=45).min().shift(1).fillna(df['value'].mean())
     # df['value'] = df['value'].rolling(window=100).mean().shift(1).fillna(df['value'].mean())
-    df['value'] = df['value'].rolling(window=115).min().shift(1).fillna(df['value'].mean())
+    df['value'] = df['value'].rolling(window=105).min().shift(1).fillna(df['value'].mean())
+    # df.loc[20257:20937,'dangerous_drift'] = 0
     print(df)
     
     # df = pd.to_datetime(df.index, unit='s')
